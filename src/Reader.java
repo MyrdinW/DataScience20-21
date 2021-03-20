@@ -11,7 +11,7 @@ public class Reader {
         try {
 
             File readable = new File(Reader.class.getResource(dbFile).getFile());
-            Scanner dbScanner = new Scanner(changeExtension(readable, ".txt"));
+            Scanner dbScanner = new Scanner(readable);
             while (dbScanner.hasNextLine()) {
                 String data = dbScanner.nextLine().trim();
                 regels.add(data);
@@ -28,9 +28,9 @@ public class Reader {
 
         
     }
-    public static File changeExtension(File f, String newExtension) {
-        int i = f.getName().lastIndexOf('.');
-        String name = f.getName().substring(0,i);
-        return new File(f.getParent(), name + newExtension);
-    }
+    //public static File changeExtension(File f, String newExtension) {
+    //    int i = f.getName().lastIndexOf('.');
+    //    String name = f.getName().substring(0,i);
+    //    return new File(f.getParent(), name + newExtension);
+    //}
 }
