@@ -13,7 +13,7 @@ public class Reader {
             File readable = new File(Reader.class.getResource(dbFile).getFile());
             Scanner dbScanner = new Scanner(readable);
             while (dbScanner.hasNextLine()) {
-                String data = dbScanner.nextLine().trim();
+                String data = dbScanner.nextLine();
                 regels.add(data);
             }
             dbScanner.close();

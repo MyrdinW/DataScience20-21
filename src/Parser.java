@@ -9,14 +9,23 @@ public class Parser {
         ArrayList<String> lijst = new ArrayList<String>();
 
         for (int i = 0; i < input.size(); i++) {
-            Matcher matcher = pattern.matcher(input.get(i).trim());
+            Matcher matcher = pattern.matcher(input.get(i));
 
             if(matcher.find()) {
-                lijst.add(matcher.group(1));
-                lijst.add(matcher.group(3));
-                lijst.add(matcher.group(5));
-            }
+                if (matcher.group(1) != null) {
+                    lijst.add(matcher.group(1));
+                }
+                if (matcher.group(3) != null) {
+                    lijst.add(matcher.group(3));
+                }
+                if (matcher.group(5) != null) {
+                    lijst.add(matcher.group(5));
+                }
+                if (matcher.group(6) != null) {
+                    lijst.add("null");
+                }
 
+            }
         }
         return lijst;
     }

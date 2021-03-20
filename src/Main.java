@@ -7,10 +7,9 @@ public class Main {
         Reader reader = new Reader();
         Parser parser = new Parser();
         String file = "/databases/actorstest.txt";
-        String regex = "([A-Za-z,.'$& ]*)?([\t]*)(.+?)([ ]*)\\(([0-9]{4})";
+        String regex = "([A-Za-z,.'$& ]*)?([\t]*)(.+?)([ ]*)\\(([0-9]{4})(.+?\\n{2})?";
         ArrayList<String> lijst = reader.Read(file);
         ArrayList<String> parsed = parser.Parse(lijst, regex);
-
 
         System.out.println(parsed);
     }
