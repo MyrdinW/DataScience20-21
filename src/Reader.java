@@ -13,7 +13,7 @@ public class Reader {
             File readable = new File(Reader.class.getResource(dbFile).getFile());
             Scanner dbScanner = new Scanner(changeExtension(readable, ".txt"));
             while (dbScanner.hasNextLine()) {
-                String data = dbScanner.nextLine();
+                String data = dbScanner.nextLine().trim();
                 regels.add(data);
             }
             dbScanner.close();
@@ -22,9 +22,6 @@ public class Reader {
         } catch(FileNotFoundException e) {
             System.out.println("File not found");
             e.printStackTrace();
-        }
-        for(int i = 0; i < regels.size(); i++) {
-            System.out.print(regels.get(i));
         }
         return regels;
         
