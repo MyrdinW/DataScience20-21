@@ -3,7 +3,10 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Reader {
-    public static void Read(dbFile){
+
+
+
+    public static void Read(String dbFile){
         try {
             File readable = new File(dbFile);
             Scanner dbScanner = new Scanner(readable);
