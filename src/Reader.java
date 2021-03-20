@@ -6,7 +6,7 @@ public class Reader {
 
     public static void Read(String dbFile){
         try {
-            File readable = new File(dbFile);
+            File readable = new File(Reader.class.getResource(dbFile).getFile());
             Scanner dbScanner = new Scanner(readable);
             while (dbScanner.hasNextLine()) {
                 String data = dbScanner.nextLine();
