@@ -1,23 +1,35 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Reader {
 
-    public static void Read(String dbFile){
+    
+    ArrayList<String> regels = new ArrayList<String>();
+    public ArrayList<String> Read(String dbFile){
         try {
+
             File readable = new File(Reader.class.getResource(dbFile).getFile());
             Scanner dbScanner = new Scanner(changeExtension(readable, ".txt"));
             while (dbScanner.hasNextLine()) {
                 String data = dbScanner.nextLine();
-                System.out.println(data);
+                regels.add(data);
             }
             dbScanner.close();
+             
 
         } catch(FileNotFoundException e) {
             System.out.println("File not found");
             e.printStackTrace();
         }
+        for(int i = 0; i < regels.size(); i++) {
+            System.out.print(regels.get(i));
+        }
+        return regels;
+        
+
+        
     }
     public static File changeExtension(File f, String newExtension) {
         int i = f.getName().lastIndexOf('.');
