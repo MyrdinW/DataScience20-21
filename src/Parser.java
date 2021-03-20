@@ -1,16 +1,23 @@
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Parser {
 
-    public static void Parse(String input, String regex) {
+    public ArrayList<String> Parse(ArrayList<String> input, String regex) {
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(input);
-        boolean matchFound = matcher.find();
-        if (matchFound) {
-            System.out.println("Match found");
-        } else {
-            System.out.println("Match not found");
+        ArrayList<String> lijst = new ArrayList<String>();
+
+        for (int i = 0; i < input.size(); i++) {
+            Matcher matcher = pattern.matcher(input.get(i).trim());
+
+            if(matcher.find()) {
+                lijst.add(matcher.group(1));
+                lijst.add(matcher.group(3));
+                lijst.add(matcher.group(5));
+            }
+
         }
+        return lijst;
     }
 }
