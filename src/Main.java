@@ -9,7 +9,7 @@ public class Main {
         String file = "/databases/actorstest.txt";
         String regex = "([A-Za-z,.'$& ]*)?([\t]*)(.+?)([ ]*)\\(([0-9]{4})(.+?\\n{2})?";
         ArrayList<String> lijst = reader.Read(file);
-        ArrayList<ArrayList<String>> parsed = parser.Parse(lijst, regex);
+        ArrayList<ArrayList<String>> parsed = parser.ParseActors(lijst, regex);
 
         Writer writer = new Writer();
         writer.createFile();
