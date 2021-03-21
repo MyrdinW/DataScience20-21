@@ -8,6 +8,7 @@ public class Parser {
 
     public ArrayList<ArrayList<String>> ParseActors(ArrayList<String> input, String regex) {
         Pattern pattern = Pattern.compile(regex);
+
         //ArrayList<String> lijst = new ArrayList<String>();
 
         ArrayList<ArrayList<String>> collectie = new ArrayList<ArrayList<String> >();
@@ -30,12 +31,12 @@ public class Parser {
                     //lijst.add(actor.replaceAll("[,]", ""));   
                     
                     if(actor == ""){
-                        collectie.get(i+1).add(collectie.get(i).get(0).toString());
-                        System.out.println(collectie.get(i).get(0).toString());
+                        collectie.get(i+1).add(collectie.get(i).get(0).replaceAll("[,]", "").toString());
+                        System.out.println(collectie.get(i+1).get(0));
                          
                     } else {
                         collectie.get(i+1).add(actor.replaceAll("[,]", ""));
-                        System.out.println(actor);
+                        System.out.println(collectie.get(i+1).get(0));
                     }     
                 }
 
