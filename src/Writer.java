@@ -19,12 +19,20 @@ public class Writer {
         }
     }
 
-    public static void writeToFile(ArrayList<String> parserOutput) {
+    public static void writeToFile(ArrayList<ArrayList<String>> parserOutput) {
         try {
             FileWriter myWriter = new FileWriter("data.csv");
 
-            for (String item : parserOutput) {
-                myWriter.write(item + "\n");
+            System.out.println(parserOutput);
+
+            for(int i = 0; i < parserOutput.size(); i++){
+                if(parserOutput.get(i).isEmpty()){
+                    System.out.println("EMPTY");
+                } else {
+                   
+                    myWriter.append(parserOutput.get(i).get(0) + "," + parserOutput.get(i).get(1) + "," + parserOutput.get(i).get(2) + "\n");
+                }
+                
             }
 
             myWriter.close();
