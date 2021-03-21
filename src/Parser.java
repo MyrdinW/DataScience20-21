@@ -20,6 +20,7 @@ public class Parser {
 
         for (int i = 0; i < input.size(); i++) {
             Matcher matcher = pattern.matcher(input.get(i));
+
             collectie.add(new ArrayList<String>());
 
             if(matcher.find()) {
@@ -27,17 +28,15 @@ public class Parser {
                 if (matcher.group(1) != null) {
                     String actor = matcher.group(1).toString();
                     //lijst.add(actor.replaceAll("[,]", ""));   
-
-                    if(actor == "", || actor == null){
-                        String lastactor = collectie.get(i).get(0);
-                        collectie.get(i+1).add(lastactor);
+                    
+                    if(actor == ""){
+                        collectie.get(i+1).add(collectie.get(i).get(0).toString());
+                        System.out.println(collectie.get(i).get(0).toString());
+                         
                     } else {
                         collectie.get(i+1).add(actor.replaceAll("[,]", ""));
-                    }
-
-                    
-
-                    
+                        System.out.println(actor);
+                    }     
                 }
 
                 if (matcher.group(3) != null) {
