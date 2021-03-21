@@ -42,7 +42,8 @@ public class Parser {
 
                 if (matcher.group(3) != null) {
                     //lijst.add(matcher.group(3));
-                    collectie.get(i+1).add(matcher.group(3));
+
+                    collectie.get(i+1).add(matcher.group(3).replaceAll("[\"]", "").toString());
                 }
 
                 if (matcher.group(5) != null) {
