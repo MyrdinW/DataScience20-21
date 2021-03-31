@@ -5,9 +5,9 @@ import java.io.IOException;
 
 public class Writer {
 
-    public static void createFile() {
+    public static void createFile(String outputfilename) {
         try {
-            File myObj = new File("data.csv");
+            File myObj = new File(outputfilename + ".csv");
             if (myObj.createNewFile()) {
                 System.out.println("File created: " + myObj.getName());
             } else {
@@ -19,9 +19,9 @@ public class Writer {
         }
     }
 
-    public static void writeToFile(ArrayList<ArrayList<String>> parserOutput, String outputfilename) {
+    public static void writeToFile(ArrayList<ArrayList<String>> parserOutput, String datafilename) {
         try {
-            FileWriter myWriter = new FileWriter(outputfilename+".csv");
+            FileWriter myWriter = new FileWriter(datafilename+".csv");
 
             System.out.println(parserOutput);
 

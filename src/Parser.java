@@ -31,7 +31,7 @@ public class Parser {
                     //lijst.add(actor.replaceAll("[,]", ""));   
                     
                     if(actor == ""){
-                        collectie.get(i+1).add(collectie.get(i).get(0).replaceAll("[,]", "").toString());
+                        collectie.get(i+1).add(collectie.get(i).get(0).replaceAll("[,]", "").toString().replaceAll("[']", ""));
                         System.out.println(collectie.get(i+1).get(0));
                          
                     } else {

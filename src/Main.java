@@ -11,17 +11,26 @@ public class Main {
         Reader reader = new Reader();
         Parser parser = new Parser();
         Writer writer = new Writer();
-        
-        ArrayList<String> lijst = reader.Read(file);
-        ArrayList<ArrayList<String>> parsed = parser.ParseActors(lijst, regex);
 
-        ArrayList<String> lijst2 = reader.Read(file2);
-        ArrayList<ArrayList<String>> parsed2 = parser.Parse(lijst2, regex);
+        Reader reader2 = new Reader();
+        Parser parser2 = new Parser();
+        Writer writer2 = new Writer();
+        
+
+        
+        ArrayList<String> actorList = reader.Read(file);
+        ArrayList<ArrayList<String>> parsedActors = parser.Parse(actorList, regex);
+
+        ArrayList<String> directorList = reader2.Read(file2);
+        ArrayList<ArrayList<String>> parsedDirectors = parser2.Parse(directorList, regex);
 
      
-        writer.createFile();
-        writer.writeToFile(parsed, "actors");
-        writer.writeToFile(parsed2, "directors");
+        writer2.createFile("Directors");
+        writer.createFile("Actors");
+
+        writer2.writeToFile(parsedDirectors, "Directors");
+        writer.writeToFile(parsedActors, "Actors");
+        
     }
 
 }
