@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class Parser {
 
-    public ArrayList<ArrayList<String>> ParseActors(ArrayList<String> input, String regex) {
+    public ArrayList<ArrayList<String>> Parse(ArrayList<String> input, String regex) {
         Pattern pattern = Pattern.compile(regex);
 
         //ArrayList<String> lijst = new ArrayList<String>();
