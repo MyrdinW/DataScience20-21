@@ -12,10 +12,6 @@ public class Main {
         Parser parser = new Parser();
         Writer writer = new Writer();
         
-        Reader reader = new Reader();
-        Parser parser = new Parser();
-        String file = "/databases/actors.txt";
-        String regex = "([A-Za-zÀ-ú,.'$&* ]*)?([\t]*)(.+?)([ ]*)\\(([0-9,?]{4})(.+?\\n{2})?";
         ArrayList<String> lijst = reader.Read(file);
         ArrayList<ArrayList<String>> parsed = parser.ParseActors(lijst, regex);
 
