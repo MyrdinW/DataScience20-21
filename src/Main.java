@@ -4,9 +4,9 @@ public class Main {
     //String uitgebreideRegex = "/([A-Za-z,. ]*)?([\t]*)(.+?)([ ]*)?(\\([0-9]*\\))([ ]*)?(\\{.+?\\})?(\\(.+?\\))?([ ]*)?(\\[.+?\\])?([ ]*)?(<[0-9]*>)?/g";
 
     public static void main(String[] args) {
-        String file = "/databases/actorstest.txt";
+        String file = "/databases/actors.txt";
         String file2 = "/databases/directors.txt";
-        String regex = "([A-Za-z,.'$& ]*)?([\t]*)(.+?)([ ]*)\\(([0-9,?]{4})(.+?\\n{2})?";
+        String regex = "([A-Za-z,.'$&*,-/,0-9,@?]*)?([\t]*)(.+?)([ ]*)\\(([0-9,?]{4})(.+?\\n{2})?";
 
         Reader actorReader = new Reader();
         Parser actorParser = new Parser();
@@ -24,7 +24,7 @@ public class Main {
      
         directorWriter.createFile("Directors");
         actorWriter.createFile("Actors");
-        
+
         directorWriter.writeToFile(parsedDirectors, "Directors");
         actorWriter.writeToFile(parsedActors, "Actors");
  
