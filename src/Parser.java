@@ -15,8 +15,8 @@ public class Parser {
 
         collectie.add(new ArrayList<String>());
 
-        collectie.get(0).add("Actor");
-        collectie.get(0).add("Title");
+        collectie.get(0).add("Person Name");
+        collectie.get(0).add("Movie Title");
         collectie.get(0).add("Year");
 
         for (int i = 0; i < input.size(); i++) {
