@@ -15,21 +15,19 @@ public class Main {
         Reader directorReader = new Reader();
         Parser directorParser = new Parser();
         Writer directorWriter = new Writer();
-        
 
-        
         ArrayList<String> actorList = actorReader.Read(file);
         ArrayList<ArrayList<String>> parsedActors = actorParser.Parse(actorList, regex);
 
         ArrayList<String> directorList = directorReader.Read(file2);
         ArrayList<ArrayList<String>> parsedDirectors = directorParser.Parse(directorList, regex);
-
      
         directorWriter.createFile("Directors");
         actorWriter.createFile("Actors");
-
+        
         directorWriter.writeToFile(parsedDirectors, "Directors");
         actorWriter.writeToFile(parsedActors, "Actors");
+ 
         
     }
 
