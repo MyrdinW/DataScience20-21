@@ -23,6 +23,8 @@ public class Writer {
         try {
             FileWriter myWriter = new FileWriter(datafilename+".csv");
 
+            System.out.println(parserOutput);
+
             for(int i = 0; i < parserOutput.size(); i++){
                 if(parserOutput.get(i).isEmpty()){
                     //nothing

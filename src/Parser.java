@@ -32,11 +32,11 @@ public class Parser {
                     
                     if(actor == ""){
                         collectie.get(i+1).add(collectie.get(i).get(0).replaceAll("[,]", "").toString().replaceAll("[']", ""));
-                        //System.out.println(collectie.get(i+1).get(0));
+                        System.out.println(collectie.get(i+1).get(0));
                          
                     } else {
                         collectie.get(i+1).add(actor.replaceAll("[,]", ""));
-                        //System.out.println(collectie.get(i+1).get(0));
+                        System.out.println(collectie.get(i+1).get(0));
                     }     
                 }
 
