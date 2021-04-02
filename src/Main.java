@@ -4,18 +4,18 @@ public class Main {
     //String uitgebreideRegex = "/([A-Za-z,. ]*)?([\t]*)(.+?)([ ]*)?(\\([0-9]*\\))([ ]*)?(\\{.+?\\})?(\\(.+?\\))?([ ]*)?(\\[.+?\\])?([ ]*)?(<[0-9]*>)?/g";
 
     public static void main(String[] args) {
-        String file = "/databases/actorstest.txt";
+        String file = "/databases/directors.txt";
         String regex = "([A-Za-z,.'$&*,-/,0-9,@?,\"]*)?([\t]*)(.+?)([ ]*)\\(([0-9,?]{4})(.+?\\n{2})?";
 
-        Reader actorReader = new Reader();
-        Parser actorParser = new Parser();
-        Writer actorWriter = new Writer();
+        Reader reader = new Reader();
+        Parser parser = new Parser();
+        Writer writer = new Writer();
 
-        ArrayList<String> actorList = actorReader.Read(file);
-        ArrayList<ArrayList<String>> parsedActors = actorParser.Parse(actorList, regex);
+        ArrayList<String> list = reader.Read(file);
+        ArrayList<ArrayList<String>> parsed = parser.Parse(list, regex);
      
-        actorWriter.createFile("Actors");
-        actorWriter.writeToFile(parsedActors, "Actors");
+        writer.createFile("Directors");
+        writer.writeToFile(parsed, "Directors");
  
         
     }
