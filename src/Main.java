@@ -19,18 +19,21 @@ public class Main {
         Writer writer = new Writer();
 
 
-        writer.createFile(newFile);
+
         if(newFile.equalsIgnoreCase("actors")  || newFile.equalsIgnoreCase("actresses")){
+            writer.createFile(newFile);
             ParserActor parserActor = new ParserActor();
             ArrayList<String> list = reader.Read(file);
             ArrayList<ArrayList<String>> parsed = parserActor.Parse(list, regexActor);
             writer.writeToFile(parsed, newFile);
         } else if(newFile.equalsIgnoreCase("ratings")){
+            writer.createFile(newFile);
             ParserRating parserRating = new ParserRating();
             ArrayList<String> list = reader.Read(file);
             ArrayList<ArrayList<String>> parsed = parserRating.Parse(list, regexRating);
             writer.writeToFile(parsed, newFile);
         } else if(newFile.equalsIgnoreCase("genres")){
+            writer.createFile(newFile);
             ParserGenres parserGenres = new ParserGenres();
             ArrayList<String> list = reader.Read(file);
             ArrayList<ArrayList<String>> parsed = parserGenres.Parse(list, regexGenres);
