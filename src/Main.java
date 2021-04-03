@@ -11,7 +11,7 @@ public class Main {
         String file = "/databases/" + in.nextLine() + ".txt";
         String newFile = removeExtension.RemoveExtension(file);
 
-        String regexActor = "([A-Za-z,.'$&*,-/,0-9,@?,\" ]*)?([\t]*)(.+?)([ ]*)\\(([0-9,?]{4})(.+?\\n{2})?";
+        String regexActor = "([A-Za-z,.'$&*,-/,0-9,@?,\" ]*)?([\t]*)(.+?)([ ]*)\\(([0-9]{4})(.+?\\n{2})?";
         String regexRating = ".{27}([0-9]\\.[0-9])[ ]*([A-Za-zÀ-ú,.'$&*,-/,0-9,#!\"@?:, ]*)\\(([0-9]{4})\\)([ ]*)([A-Za-zÀ-ú,.'$&*,-/,0-9,#!\"@?{}():, ]*)";
         String regexGenres = "(.+?) \\(([0-9]{4})(/[I]*)?\\) ?(\\{.+?\\}?\\})?(\\(.+?\\))?(\\t*)([A-z\\-]*)";
         String regexCountries = "(.+?) \\(([0-9]{4})(/?I*)\\) ?(\\{.+?\\})?(\\t)*([A-z,.s -].+)";
