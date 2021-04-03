@@ -12,7 +12,7 @@ public class ParserRating {
         collectie.add(new ArrayList<String>());
 
         collectie.get(0).add("Rating");
-        collectie.get(0).add("Movie Title + Episode");
+        collectie.get(0).add("Movie Title");
         collectie.get(0).add("Year");
 
         for (int i = 0; i < input.size(); i++) {
@@ -34,12 +34,9 @@ public class ParserRating {
                     }
                 }
 
-                if (matcher.group(4) != null && matcher.group(9) != null) {
-                    collectie.get(i + 1).add(matcher.group(4).replaceAll("[\",]", "").replaceAll("[,]", "").toString()
-                            + " " + matcher.group(9).replaceAll("[\",{,},(,),]", "").replaceAll("[,]", "").toString());
-                } else if (matcher.group(4) != null) {
+                if (matcher.group(4) != null) {
                     collectie.get(i + 1).add(matcher.group(4).replaceAll("[\",]", "").replaceAll("[,]", "").toString());
-                }
+                } 
 
                 if (matcher.group(6) != null) {
                     collectie.get(i + 1).add(matcher.group(6));
