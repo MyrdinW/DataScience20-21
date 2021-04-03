@@ -9,24 +9,35 @@ public class Main {
         Scanner in = new Scanner(System.in);
         System.out.println("What is the name of the database you would like to parse? (example: actresses)");
         String file = "/databases/" + in.nextLine() + ".txt";
-        
+        String newFile = removeExtension.RemoveExtension(file);
 
        //String file = "/databases/actresses.txt";
-        String regex = "(.+?) \\(([0-9]{4})(/[I]*)?\\) ?(\\{.+?\\}?\\})?(\\(.+?\\))?(\\t*)([A-z\\-]*)";
+        String regexActor = "([A-Za-z,.'$&*,-/,0-9,@?,\" ]*)?([\t]*)(.+?)([ ]*)\\(([0-9,?]{4})(.+?\\n{2})?";
+        String regexRating = "(.{27})([0-9]\\.[0-9])([ ]*)([A-Za-zÀ-ú,.'$&*,-/,0-9,#!\"@?:, ]*)(\\()([0-9,?]{4})(\\))([ ]*)([A-Za-zÀ-ú,.'$&*,-/,0-9,#!\"@?{}():, ]*)";
+        String regexGenres = "(.+?) \\(([0-9]{4})(/[I]*)?\\) ?(\\{.+?\\}?\\})?(\\(.+?\\))?(\\t*)([A-z\\-]*)";
 
         Reader reader = new Reader();
-        ParserGenres parser = new ParserGenres();
+        ParserGenres parserGenres = new ParserGenres();
+        ParserActor parserActor = new ParserActor();
+        ParserRating parserRating = new ParserRating();
         Writer writer = new Writer();
-        //removeExtension remover = new removeExtension();
-        
+
         ArrayList<String> list = reader.Read(file);
-        ArrayList<ArrayList<String>> parsed = parser.Parse(list, regex);
-        String newFile = removeExtension.RemoveExtension(file);
-       
+
         writer.createFile(newFile);
-        writer.writeToFile(parsed, newFile);
+        if(newFile == "actors" || newFile == "actresses"){
+            ArrayList<ArrayList<String>> parsed = parserActor.Parse(list, regexActor);
+            writer.writeToFile(parsed, newFile);
+        } else if(newFile == "ratings"){ 
+            ArrayList<ArrayList<String>> parsed = parserRating.Parse(list, regexRating);
+            writer.writeToFile(parsed, newFile);
+        } else if(newFile == "genres"){
+            ArrayList<ArrayList<String>> parsed = parserGenres.Parse(list, regexGenres);
+            writer.writeToFile(parsed, newFile);
+        } else { 
+            System.out.println("Verkeerd bestand gekozen.");
+        }
  
-        
     }
 
 }
