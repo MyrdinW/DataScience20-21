@@ -15,6 +15,7 @@ public class Main {
         String regexRating = "(.{27})([0-9]\\.[0-9])([ ]*)([A-Za-zÀ-ú,.'$&*,-/,0-9,#!\"@?:, ]*)(\\()([0-9,?]{4})(\\))([ ]*)([A-Za-zÀ-ú,.'$&*,-/,0-9,#!\"@?{}():, ]*)";
         String regexGenres = "(.+?) \\(([0-9]{4})(/[I]*)?\\) ?(\\{.+?\\}?\\})?(\\(.+?\\))?(\\t*)([A-z\\-]*)";
         String regexCountries = "(.+?) \\(([0-9]{4})(/?I*)\\) ?(\\{.+?\\})?(\\t)*([A-z,.s -].+)";
+        String regexMovies = "(.+?)\\(([0-9,?]{4})/?I*";
 
         Reader reader = new Reader();
         Writer writer = new Writer();
@@ -44,6 +45,12 @@ public class Main {
             ParserCountries parserCountries = new ParserCountries();
             ArrayList<String> list = reader.Read(file);
             ArrayList<ArrayList<String>> parsed = parserCountries.Parse(list, regexCountries);
+            writer.writeToFile(parsed, newFile);
+        } else if(newFile.equalsIgnoreCase("movies")){
+            writer.createFile(newFile);
+            ParserMovies parserMovies = new ParserMovies();
+            ArrayList<String> list = reader.Read(file);
+            ArrayList<ArrayList<String>> parsed = parserMovies.Parse(list, regexMovies);
             writer.writeToFile(parsed, newFile);
         } else { 
             System.out.println("Verkeerd bestand gekozen.");
