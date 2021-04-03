@@ -39,10 +39,10 @@ public class ParserCountries {
                     }
                 }
 
-                if (matcher.group(3) != null) {
+                if (matcher.group(2) != null) {
                     //lijst.add(matcher.group(3));
 
-                    collectie.get(i+1).add(matcher.group(3).toString());
+                    collectie.get(i+1).add(matcher.group(2).toString());
                 }
 
                 if (matcher.group(6) != null) {
