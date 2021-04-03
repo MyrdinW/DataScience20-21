@@ -7,15 +7,15 @@ public class Main {
     public static void main(String[] args) {
         // Using Scanner for Getting Input from User
         Scanner in = new Scanner(System.in);
-        System.out.println("Give me the path to the database you would like to parse: (example: /databases/actresses.txt) ");
-        String file = in.nextLine();
+        System.out.println("What is the name of the database you would like to parse? (example: actresses)");
+        String file = "/databases/" + in.nextLine() + ".txt";
         
 
        //String file = "/databases/actresses.txt";
-        String regex = "([A-Za-z,.'$&*,-/,0-9,@?,\" ]*)?([\t]*)(.+?)([ ]*)\\(([0-9,?]{4})(.+?\\n{2})?";
+        String regex = "(.+?) \\(([0-9]{4})(/[I]*)?\\) ?(\\{.+?\\}?\\})?(\\(.+?\\))?(\\t*)([A-z\\-]*)";
 
         Reader reader = new Reader();
-        Parser parser = new Parser();
+        ParserGenres parser = new ParserGenres();
         Writer writer = new Writer();
         //removeExtension remover = new removeExtension();
         
