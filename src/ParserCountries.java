@@ -45,9 +45,9 @@ public class ParserCountries {
                     collectie.get(i+1).add(matcher.group(3).toString());
                 }
 
-                if (matcher.group(7) != null) {
+                if (matcher.group(6) != null) {
                     //lijst.add(matcher.group(5));
-                    collectie.get(i+1).add(matcher.group(7));
+                    collectie.get(i+1).add(matcher.group(6));
                 }
             }
 
