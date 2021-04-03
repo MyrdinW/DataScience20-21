@@ -16,21 +16,23 @@ public class Main {
         String regexGenres = "(.+?) \\(([0-9]{4})(/[I]*)?\\) ?(\\{.+?\\}?\\})?(\\(.+?\\))?(\\t*)([A-z\\-]*)";
 
         Reader reader = new Reader();
-        ParserGenres parserGenres = new ParserGenres();
-        ParserActor parserActor = new ParserActor();
-        ParserRating parserRating = new ParserRating();
         Writer writer = new Writer();
 
-        ArrayList<String> list = reader.Read(file);
 
         writer.createFile(newFile);
-        if(newFile.equals("actors")  || newFile.equals("actresses")){
+        if(newFile.equalsIgnoreCase("actors")  || newFile.equalsIgnoreCase("actresses")){
+            ParserActor parserActor = new ParserActor();
+            ArrayList<String> list = reader.Read(file);
             ArrayList<ArrayList<String>> parsed = parserActor.Parse(list, regexActor);
             writer.writeToFile(parsed, newFile);
-        } else if(newFile.equals("ratings")){ 
+        } else if(newFile.equalsIgnoreCase("ratings")){
+            ParserRating parserRating = new ParserRating();
+            ArrayList<String> list = reader.Read(file);
             ArrayList<ArrayList<String>> parsed = parserRating.Parse(list, regexRating);
             writer.writeToFile(parsed, newFile);
-        } else if(newFile.equals("genres")){
+        } else if(newFile.equalsIgnoreCase("genres")){
+            ParserGenres parserGenres = new ParserGenres();
+            ArrayList<String> list = reader.Read(file);
             ArrayList<ArrayList<String>> parsed = parserGenres.Parse(list, regexGenres);
             writer.writeToFile(parsed, newFile);
         } else { 
