@@ -16,7 +16,7 @@ public class ParserCountries {
 
         collectie.get(0).add("Movie Title");
         collectie.get(0).add("Year");
-        collectie.get(0).add("Land");
+        collectie.get(0).add("Country");
 
         for (int i = 0; i < input.size(); i++) {
             Matcher matcher = pattern.matcher(input.get(i));
