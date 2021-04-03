@@ -28,9 +28,11 @@ public class Writer {
             for(int i = 0; i < parserOutput.size(); i++){
                 if(parserOutput.get(i).isEmpty()){
                     //nothing
-                } else {
-                   
+                } else if(parserOutput.size() == 3){
                     myWriter.append(parserOutput.get(i).get(0) + "," + parserOutput.get(i).get(1) + "," + parserOutput.get(i).get(2) + "\n");
+                } else {
+                    myWriter.append(parserOutput.get(i).get(0) + "," + parserOutput.get(i).get(1) + "\n");
+
                 }
                 
             }
