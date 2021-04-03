@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class Writer {
 
-    public static void createFile(String outputfilename) {
+    public void createFile(String outputfilename) {
         try {
             File myObj = new File(outputfilename + ".csv");
             if (myObj.createNewFile()) {
@@ -19,7 +19,7 @@ public class Writer {
         }
     }
 
-    public static void writeToFile(ArrayList<ArrayList<String>> parserOutput, String datafilename) {
+    public void writeToFile(ArrayList<ArrayList<String>> parserOutput, String datafilename) {
         try {
             FileWriter myWriter = new FileWriter(datafilename+".csv");
 

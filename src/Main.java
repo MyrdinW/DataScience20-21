@@ -11,7 +11,6 @@ public class Main {
         String file = "/databases/" + in.nextLine() + ".txt";
         String newFile = removeExtension.RemoveExtension(file);
 
-       //String file = "/databases/actresses.txt";
         String regexActor = "([A-Za-z,.'$&*,-/,0-9,@?,\" ]*)?([\t]*)(.+?)([ ]*)\\(([0-9,?]{4})(.+?\\n{2})?";
         String regexRating = "(.{27})([0-9]\\.[0-9])([ ]*)([A-Za-zÀ-ú,.'$&*,-/,0-9,#!\"@?:, ]*)(\\()([0-9,?]{4})(\\))([ ]*)([A-Za-zÀ-ú,.'$&*,-/,0-9,#!\"@?{}():, ]*)";
         String regexGenres = "(.+?) \\(([0-9]{4})(/[I]*)?\\) ?(\\{.+?\\}?\\})?(\\(.+?\\))?(\\t*)([A-z\\-]*)";
@@ -25,13 +24,13 @@ public class Main {
         ArrayList<String> list = reader.Read(file);
 
         writer.createFile(newFile);
-        if(newFile == "actors" || newFile == "actresses"){
+        if(newFile.equals("actors")  || newFile.equals("actresses")){
             ArrayList<ArrayList<String>> parsed = parserActor.Parse(list, regexActor);
             writer.writeToFile(parsed, newFile);
-        } else if(newFile == "ratings"){ 
+        } else if(newFile.equals("ratings")){ 
             ArrayList<ArrayList<String>> parsed = parserRating.Parse(list, regexRating);
             writer.writeToFile(parsed, newFile);
-        } else if(newFile == "genres"){
+        } else if(newFile.equals("genres")){
             ArrayList<ArrayList<String>> parsed = parserGenres.Parse(list, regexGenres);
             writer.writeToFile(parsed, newFile);
         } else { 
