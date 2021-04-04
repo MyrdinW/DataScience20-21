@@ -26,14 +26,8 @@ public class ParserMovies {
                     String actor = matcher.group(1).toString();
                     //lijst.add(actor.replaceAll("[,]", ""));   
                     
-                    if(actor == ""){
-                        collectie.get(i+1).add(collectie.get(i).get(0).replaceAll("[,]", "").toString().replaceAll("[']", ""));
-                        //System.out.println(collectie.get(i+1).get(0));
+                    collectie.get(i+1).add(matcher.group(1).replaceAll("[\",]", "").replaceAll("[,]", "").toString());
                          
-                    } else {
-                        collectie.get(i+1).add(actor.replaceAll("[,]", ""));
-                        //System.out.println(collectie.get(i+1).get(0));
-                    }     
                 }
 
                 if (matcher.group(2) != null) {

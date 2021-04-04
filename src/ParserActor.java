@@ -16,6 +16,8 @@ public class ParserActor {
         collectie.get(0).add("Person Name");
         collectie.get(0).add("Movie Title");
         collectie.get(0).add("Year");
+        String actor = "";
+        String test = "";
 
         for (int i = 0; i < input.size(); i++) {
             Matcher matcher = pattern.matcher(input.get(i));
@@ -25,17 +27,13 @@ public class ParserActor {
             if(matcher.find()) {
 
                 if (matcher.group(1) != null) {
-                    String actor = matcher.group(1).toString();
-                    //lijst.add(actor.replaceAll("[,]", ""));   
-                    
-                    if(actor == ""){
-                        collectie.get(i+1).add(collectie.get(i).get(0).replaceAll("[,]", "").toString().replaceAll("[']", ""));
-                        //System.out.println(collectie.get(i+1).get(0));
-                         
-                    } else {
+                   if(matcher.group(1).toString().equals(test))
+                   {
+                        //nothing
+                   } else {
+                       actor = matcher.group(1).toString();
+                   }
                         collectie.get(i+1).add(actor.replaceAll("[,]", ""));
-                        //System.out.println(collectie.get(i+1).get(0));
-                    }     
                 }
 
                 if (matcher.group(3) != null) {
