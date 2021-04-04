@@ -25,17 +25,17 @@ public class ParserRating {
 
             //add matches to arraylist according to regex group matches
             if (matcher.find()) {
-                if (matcher.group(1) != null) {
-                    String actor = matcher.group(1).toString();
+                if (matcher.group(2) != null) {
+                    String actor = matcher.group(2).toString();
                         collectie.get(i + 1).add(actor.replaceAll("[,]", ""));
                 }
 
-                if (matcher.group(2) != null) {
-                    collectie.get(i + 1).add(matcher.group(2).replaceAll("[\",]", "").replaceAll("[,]", "").toString());
+                if (matcher.group(4) != null) {
+                    collectie.get(i + 1).add(matcher.group(4).replaceAll("[\",]", "").replaceAll("[,]", "").toString());
                 } 
 
-                if (matcher.group(3) != null) {
-                    collectie.get(i + 1).add(matcher.group(3));
+                if (matcher.group(6) != null) {
+                    collectie.get(i + 1).add(matcher.group(6));
                 }
             }
         }
