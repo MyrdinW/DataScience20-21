@@ -37,8 +37,8 @@ public class ParserCountries {
                     collectie.get(i+1).add(matcher.group(2).toString());
                 }
 
-                if (matcher.group(6) != null) {
-                    collectie.get(i+1).add(matcher.group(6));
+                if (matcher.group(5) != null) {
+                    collectie.get(i+1).add(matcher.group(5));
                 }
             }
         }
