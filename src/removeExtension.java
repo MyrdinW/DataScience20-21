@@ -1,10 +1,8 @@
 public class removeExtension{
     
-    public static String RemoveExtension(String s) {
-
-   
+    public static String RemoveExtension(String s) {   
     String filename;
-
+    
     // Remove the path upto the filename.
     int pos = s.lastIndexOf("/") + 1;
     if (pos == -1) {
