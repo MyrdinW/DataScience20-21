@@ -2,27 +2,33 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    //String uitgebreideRegex = "/([A-Za-z,. ]*)?([\t]*)(.+?)([ ]*)?(\\([0-9]*\\))([ ]*)?(\\{.+?\\})?(\\(.+?\\))?([ ]*)?(\\[.+?\\])?([ ]*)?(<[0-9]*>)?/g";
-
     public static void main(String[] args) {
         // Using Scanner for Getting Input from User
         Scanner in = new Scanner(System.in);
+        // Console output for Parsing
         System.out.println("What is the name of the database you would like to parse?");
         System.out.println("Possible options: actors / actresses / movies / countries / genres / ratings");
+        
+        //Save user input to variable including pathing
         String file = "/databases/" + in.nextLine() + ".txt";
-        String newFile = removeExtension.RemoveExtension(file);
 
+        //Save user input without pathing
+        String newFile = removeExtension.RemoveExtension(file);
+        
+        //Regex per imdb database file
         String regexActor = "([A-Za-z,.'$&*,-/,0-9,@?ï»¿#,\" ]*)?([\t]*)(.+?)([ ]*)\\(([0-9]{4})(.+?\\n{2})?";
         String regexRating = ".{27}([0-9]\\.[0-9])[ ]*([A-Za-zÀ-ú,.'$&*,-/,0-9,#!\"@?:, ]*)\\(([0-9]{4})\\)([ ]*)([A-Za-zÀ-ú,.'$&*,-/,0-9,#!\"@?{}():, ]*)";
         String regexGenres = "(.+?) \\(([0-9]{4})(/[I]*)?\\) ?(\\{.+?\\}?\\})?(\\(.+?\\))?(\\t*)([A-z\\-]*)";
         String regexCountries = "(.+?) \\(([0-9]{4})(/?I*)\\) ?(\\{.+?\\})?(\\t)*([A-z,.s -].+)";
         String regexMovies = "(.+?)\\(([0-9]{4})/?I*";
 
+        //init Reader and Writer objects
         Reader reader = new Reader();
         Writer writer = new Writer();
 
 
-
+        // Use user input to select which database file to parse and parse
+        // Optional upgrade (use switch statements)
         if(newFile.equalsIgnoreCase("actors")  || newFile.equalsIgnoreCase("actresses")){
             writer.createFile(newFile);
             ParserActor parserActor = new ParserActor();
@@ -54,8 +60,11 @@ public class Main {
             ArrayList<ArrayList<String>> parsed = parserMovies.Parse(list, regexMovies);
             writer.writeToFile(parsed, newFile);
         } else { 
+            //Security if input doesn't exist
             System.out.println("Verkeerd bestand gekozen.");
         }
+
+        //close input Scanner
         in.close();
     }
 
