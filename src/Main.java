@@ -1,5 +1,10 @@
+import commandPattern.CommandInvoker;
+import commandPattern.RequestCommand;
+import commandPattern.commands.*;
+
 import java.util.ArrayList;
 import java.util.Scanner;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -22,50 +27,74 @@ public class Main {
         String regexCountries = "(.+?) \\(([0-9]{4})(.+?)(\\t)+([A-zÀ-ú,. -].+)";
         String regexMovies = "(.+?) \\(([0-9]{4})/?I*";
 
-        //init Reader and Writer objects
+        //Init Reader and Writer objects
         Reader reader = new Reader();
         Writer writer = new Writer();
+
+        ArrayList<String> list = reader.Read(file);
+        ArrayList<ArrayList<String>> parsed = new ArrayList<>();
+
+        //Make a RequestCommand instance so it can be passed to the commands
+        RequestCommand rq = new RequestCommand();
+
+        //Make instances of all commands that will be used
+        ParseActor parseActorCmd = new ParseActor(rq, list, regexActor, parsed);
+        ParseCountries parseCountriesCmd = new ParseCountries(rq, list, regexCountries, parsed);
+        ParseGenres parseGenresCmd = new ParseGenres(rq, list, regexGenres, parsed);
+        ParseMovies parseMoviesCmd = new ParseMovies(rq, list, regexMovies, parsed);
+        ParseRating parseRatingCmd = new ParseRating(rq, list, regexRating, parsed);
+
+        //Make an invoker instance to set and execute commands
+        CommandInvoker invoker = new CommandInvoker();
 
 
         // Use user input to select which database file to parse and parse
         // Optional upgrade (use switch statements)
-        if(newFile.equalsIgnoreCase("actors")  || newFile.equalsIgnoreCase("actresses")){
+        if (newFile.equalsIgnoreCase("actors") || newFile.equalsIgnoreCase("actresses")) {
             writer.createFile(newFile);
-            ParserActor parserActor = new ParserActor();
-            ArrayList<String> list = reader.Read(file);
-            ArrayList<ArrayList<String>> parsed = parserActor.Parse(list, regexActor);
+            //Give the command to be executed to the invoker and execute it.
+            invoker.setCommand(parseActorCmd);
+            invoker.executeCommand();
+            //Write the parsed data to the new file.
             writer.writeToFile(parsed, newFile);
-        } else if(newFile.equalsIgnoreCase("ratings")){
+        } else if (newFile.equalsIgnoreCase("ratings")) {
             writer.createFile(newFile);
-            ParserRating parserRating = new ParserRating();
-            ArrayList<String> list = reader.Read(file);
-            ArrayList<ArrayList<String>> parsed = parserRating.Parse(list, regexRating);
+            //Give the command to be executed to the invoker and execute it.
+            invoker.setCommand(parseRatingCmd);
+            invoker.executeCommand();
+            //Write the parsed data to the new file.
             writer.writeToFile(parsed, newFile);
-        } else if(newFile.equalsIgnoreCase("genres")){
+        } else if (newFile.equalsIgnoreCase("genres")) {
             writer.createFile(newFile);
-            ParserGenres parserGenres = new ParserGenres();
-            ArrayList<String> list = reader.Read(file);
-            ArrayList<ArrayList<String>> parsed = parserGenres.Parse(list, regexGenres);
+            //Give the command to be executed to the invoker and execute it.
+            invoker.setCommand(parseGenresCmd);
+            invoker.executeCommand();
+            //Write the parsed data to the new file.
             writer.writeToFile(parsed, newFile);
-        }  else if(newFile.equalsIgnoreCase("countries")){
+        } else if (newFile.equalsIgnoreCase("countries")) {
             writer.createFile(newFile);
-            ParserCountries parserCountries = new ParserCountries();
-            ArrayList<String> list = reader.Read(file);
-            ArrayList<ArrayList<String>> parsed = parserCountries.Parse(list, regexCountries);
+            //Give the command to be executed to the invoker and execute it.
+            invoker.setCommand(parseCountriesCmd);
+            invoker.executeCommand();
+            //Write the parsed data to the new file.
             writer.writeToFile(parsed, newFile);
-        } else if(newFile.equalsIgnoreCase("movies")){
+        } else if (newFile.equalsIgnoreCase("movies")) {
             writer.createFile(newFile);
-            ParserMovies parserMovies = new ParserMovies();
-            ArrayList<String> list = reader.Read(file);
-            ArrayList<ArrayList<String>> parsed = parserMovies.Parse(list, regexMovies);
+            //Give the command to be executed to the invoker and execute it.
+            invoker.setCommand(parseMoviesCmd);
+            invoker.executeCommand();
+            //Write the parsed data to the new file.
             writer.writeToFile(parsed, newFile);
-        } else { 
+        } else {
             //Security if input doesn't exist
             System.out.println("Verkeerd bestand gekozen.");
         }
 
+
         //close input Scanner
         in.close();
+
+
     }
 
 }
